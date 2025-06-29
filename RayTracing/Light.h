@@ -1,6 +1,6 @@
 #pragma once
 
-namespace THC
+namespace SYC
 {
 	class Light
 	{

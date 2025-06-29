@@ -5,7 +5,7 @@
 #include "Triangle.h"
 #include "Square.h"
 
-namespace THC
+namespace SYC
 {
 	using namespace std;
 

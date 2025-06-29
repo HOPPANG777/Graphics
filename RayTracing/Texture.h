@@ -2,7 +2,7 @@
 
 #include <stb_image.h>
 
-namespace THC
+namespace SYC
 {
 	class Texture
 	{

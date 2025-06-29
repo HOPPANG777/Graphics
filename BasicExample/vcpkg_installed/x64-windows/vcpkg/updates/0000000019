@@ -1,6 +1,0 @@
-Package: vcpkg-cmake-config
-Version: 2024-05-23
-Architecture: x64-windows
-Multi-Arch: same
-Abi: 32421728ca7fca59ac93ffc023211a23962e31933dfb3504f70e95d2449d19cc
-Status: purge ok not-installed

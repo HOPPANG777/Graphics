@@ -4,7 +4,7 @@
 #include "Ray.h"
 #include "Texture.h"
 
-namespace THC
+namespace SYC
 {
 	class Object
 	{

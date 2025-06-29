@@ -2,7 +2,7 @@
 
 #include "Triangle.h"
 
-namespace THC
+namespace SYC
 {
 	class Square : public Object
 	{

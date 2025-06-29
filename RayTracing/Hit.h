@@ -3,7 +3,7 @@
 #include <iostream>
 #include <directxtk/SimpleMath.h>
 
-namespace THC//내 이름
+namespace SYC//내 이름
 {
 	using namespace DirectX;
 	using namespace SimpleMath;

@@ -52,5 +52,5 @@ private:
 	Color backgroundColor = { .5f, .5f, .5f, 1.0f };
 	//Color backgroundColor = Color(Vector3(127, 161, 195) / 250.f);
 
-	THC::RayTracer rayTracer;
+	SYC::RayTracer rayTracer;
 };

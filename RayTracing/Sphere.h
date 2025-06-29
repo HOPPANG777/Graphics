@@ -2,7 +2,7 @@
 
 #include "Object.h"
 
-namespace THC
+namespace SYC
 {
 	class Sphere : public Object
 	{
