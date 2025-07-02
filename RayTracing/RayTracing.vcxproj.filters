@@ -8,21 +8,52 @@
   <ItemGroup>
     <ClInclude Include="Example.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="targetver.h" />
-    <ClInclude Include="ReadData.h" />
-    <ClInclude Include="Hit.h" />
-    <ClInclude Include="Ray.h" />
-    <ClInclude Include="Sphere.h" />
-    <ClInclude Include="RayTracer.h" />
-    <ClInclude Include="Light.h" />
-    <ClInclude Include="Object.h" />
-    <ClInclude Include="Triangle.h" />
-    <ClInclude Include="Square.h" />
-    <ClInclude Include="Texture.h" />
+    <ClInclude Include="Ray.h">
+      <Filter>_Ray</Filter>
+    </ClInclude>
+    <ClInclude Include="RayTracer.h">
+      <Filter>_Ray</Filter>
+    </ClInclude>
+    <ClInclude Include="Hit.h">
+      <Filter>_Ray</Filter>
+    </ClInclude>
+    <ClInclude Include="Light.h">
+      <Filter>_Ray</Filter>
+    </ClInclude>
+    <ClInclude Include="Triangle.h">
+      <Filter>_Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>_Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Square.h">
+      <Filter>_Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Sphere.h">
+      <Filter>_Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>_Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>_Utilites</Filter>
+    </ClInclude>
+    <ClInclude Include="ReadData.h">
+      <Filter>_Utilites</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="_Shaders">
       <UniqueIdentifier>{b1637508-4795-4e37-892b-8e255b69e996}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Objects">
+      <UniqueIdentifier>{def9aac3-1f83-400b-b41a-5612dea93f4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Ray">
+      <UniqueIdentifier>{b9fd44ba-2b42-4558-93a9-aa7ef22a14e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Utilites">
+      <UniqueIdentifier>{7c7c5a85-5ba2-47d7-a22d-65cd07b9f4d6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
