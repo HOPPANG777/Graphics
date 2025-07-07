@@ -9,8 +9,17 @@ namespace SYC
 	public:
 		Triangle triangle1, triangle2;
 
-		Square(const Vector3& v0, const Vector3& v1, const Vector3& v2, const Vector3& v3,
-			const Vector2& uv0, const Vector2& uv1, const Vector2& uv2, const Vector2& uv3)
+		Square
+		(
+			const Vector3& v0, 
+			const Vector3& v1, 
+			const Vector3& v2, 
+			const Vector3& v3,
+			const Vector2& uv0, 
+			const Vector2& uv1, 
+			const Vector2& uv2, 
+			const Vector2& uv3
+		)
 			: triangle1(v0, v1, v2, uv0, uv1, uv2), triangle2(v0, v2, v3, uv0, uv2, uv3)
 		{
 		}

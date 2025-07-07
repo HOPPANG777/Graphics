@@ -215,8 +215,6 @@ void Example::Update()
 
 void Example::Render()
 {
-	
-
 	float clearColor[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
 	deviceContext->RSSetViewports(1, &viewport);
 	deviceContext->OMSetRenderTargets(1, renderTargetView.GetAddressOf(), nullptr);

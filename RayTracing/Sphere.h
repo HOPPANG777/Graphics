@@ -11,7 +11,12 @@ namespace SYC
 		float radius;
 
 	public:
-		Sphere(const Vector3& center, const float radius, const Color& color = Color(1))
+		Sphere
+		(
+			const Vector3& center, 
+			const float radius, 
+			const Color& color = Color(1)
+		)
 			: center(center), radius(radius), Object(color)
 		{}
 
@@ -31,8 +36,8 @@ namespace SYC
 				const float d2 = -b * 0.5f - sqrt(nabla);
 
 				hit.distance = min(d1, d2);
-				hit.point = ray.start + hit.distance * ray.dir;//시작점에서 단위벡터 방향에 거리를 곱하여 충돌점으로 이동
-				(hit.point - center).Normalize(hit.normal);//원의 센터에서 충돌점으로 향하는 벡터를 단위 벡터로 만든다
+				hit.point = ray.start + hit.distance * ray.dir;	//시작점에서 단위벡터 방향에 거리를 곱하여 충돌점으로 이동
+				(hit.point - center).Normalize(hit.normal);		//원의 센터에서 충돌점으로 향하는 벡터를 단위 벡터로 만든다
 			}
 
 			/*

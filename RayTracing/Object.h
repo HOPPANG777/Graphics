@@ -18,7 +18,7 @@ namespace SYC
 		shared_ptr<Texture> difTexture;
 
 	public:
-		Object(const Color& color = Color(1))
+		Object(const Color& color = Color(1)) 
 			: amb(color), diff(color), spec(color)
 		{}
 

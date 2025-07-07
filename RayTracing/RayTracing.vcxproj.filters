@@ -56,12 +56,4 @@
       <UniqueIdentifier>{7c7c5a85-5ba2-47d7-a22d-65cd07b9f4d6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
-  <ItemGroup>
-    <FxCompile Include="_Shaders\PixelShader.hlsl">
-      <Filter>_Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="_Shaders\VertexShader.hlsl">
-      <Filter>_Shaders</Filter>
-    </FxCompile>
-  </ItemGroup>
 </Project>
