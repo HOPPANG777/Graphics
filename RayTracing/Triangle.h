@@ -48,10 +48,20 @@ namespace SYC
 			return hit;
 		}
 
-		bool IntersectRayTriangle(const Vector3& origin, const Vector3& dir,
-			const Vector3& v0, const Vector3& v1, const Vector3& v2,
-			Vector3& point, Vector3& faceNormal, float& t,
-			float& w0, float& w1) const
+		bool IntersectRayTriangle
+		(
+			const Vector3& origin, 
+			const Vector3& dir,
+			const Vector3& v0, 
+			const Vector3& v1, 
+			const Vector3& v2,
+			Vector3& point, 
+			Vector3& 
+			faceNormal, 
+			float& t,
+			float& w0, 
+			float& w1
+		) const
 		{
 			((v1 - v0).Cross(v2 - v0)).Normalize(faceNormal);
 
