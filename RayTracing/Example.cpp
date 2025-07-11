@@ -4,7 +4,7 @@
 #include "Example.h"
 
 Example::Example(HWND window, UINT width, UINT height)
-	: rayTracer(width/8, height/8) //width / 2.0f, height / 2.0f 이걸로 해상도 낮출수 있음
+	: rayTracer(width/2, height/2) //width / 2.0f, height / 2.0f 이걸로 해상도 낮출수 있음
 {
 	Initialize(window, width, height);
 }

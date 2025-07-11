@@ -20,11 +20,12 @@ namespace SYC
 			: width(width), height(height)
 		{
 			auto sphere1 = make_shared<Sphere>(Vector3(0.0f, 0.0f, 0.6f), 0.4f);
-
+			
 			sphere1->amb = Color(Vector3(0.2f, 0.0f, 0.0f));
 			sphere1->diff = Color(1.0f, 0.1f, 0.1f, 1.0f);
 			sphere1->spec = Color(Vector3(1.5f));
 			sphere1->alpha = 50.0f;
+			sphere1->ks = 1.0f;//specular coefficient
 
 			objects.push_back(sphere1);
 
@@ -37,7 +38,8 @@ namespace SYC
 
 			//objects.push_back(triangle1);
 
-			/*vector<Color> texturePixels(4 * 4);
+			/*
+			vector<Color> texturePixels(4 * 4);
 			for (int j = 0; j < 4; ++j)
 				for (int i = 0; i < 4; ++i)
 				{
@@ -50,7 +52,7 @@ namespace SYC
 					else
 						texturePixels[i + 4 * j] = Color(Vector3(1.0f, 1.0f, 1.0f) * 0.25f * (j + 1.0f));
 				}
-				*/
+			//*/
 
 			//auto imageTexture = make_shared<Texture>("_Textures/RocksImage.jpg");
 
@@ -72,8 +74,17 @@ namespace SYC
 			*/
 
 			float uvRatio = 1.0f;
-			auto square = make_shared<Square>(Vector3(-2.0f, 2.0f, 2.0f), Vector3(2.0f, 2.0f, 2.0f), Vector3(2.0f, -2.0f, 2.0f), Vector3(-2.0f, -2.0f, 2.0f),
-				Vector2(), Vector2(uvRatio, 0.0f), Vector2(uvRatio, uvRatio), Vector2(0, uvRatio));
+			auto square = make_shared<Square>
+			(
+				Vector3(-2.0f, 2.0f, 2.0f), 
+				Vector3(2.0f, 2.0f, 2.0f), 
+				Vector3(2.0f, -2.0f, 2.0f), 
+				Vector3(-2.0f, -2.0f, 2.0f),
+				Vector2(), 
+				Vector2(uvRatio, 0.0f), 
+				Vector2(uvRatio, uvRatio), 
+				Vector2(0, uvRatio)
+			);
 			square->amb = Color(Vector3(0.2f));
 			square->diff = Color(Vector3(1.0f));
 			square->spec = Color(Vector3(0.0f));
@@ -144,8 +155,8 @@ namespace SYC
 				(light.pos - hit.point).Normalize(l);
 
 
-				/*
-				* 그림자 Off
+				//*
+				// 그림자 Off
 				Ray shadowRay = { hit.point + 1e-4f * l, l };
 				
 
@@ -154,7 +165,7 @@ namespace SYC
 				//if(shadowHit.distance>=0 && shadowHit.distance < l.Distance(hit.point, light.pos))
 				if(shadowHit.obj != nullptr && shadowHit.distance <= (hit.point - light.pos).Length())
 					return Color(hit.obj->amb);
-				*/
+				//*/
 				const float diff = max(n.Dot(l), 0.0f);
 
 				if (hit.obj->difTexture)
@@ -173,10 +184,11 @@ namespace SYC
 				//const float spec = pow(max((-ray.dir).Dot(r), 0.0f), sphere->alpha);
 				const float spec = pow(max((-ray.dir).Dot(r), 0.0f), hit.obj->alpha);
 
-				pointColor += Color(hit.obj->spec * spec);
+				//pointColor += Color(hit.obj->spec * spec);
+				pointColor += Color(hit.obj->spec * spec * hit.obj->ks);
 
 				//return Color(sphere->amb + sphere->diff);
-				//return Color(sphere->diff * diff);
+				//return Color((sphere->diff * diff);
 				//return Color(sphere->spec * spec * sphere->ks);
 				return pointColor;
 			}
@@ -193,23 +205,52 @@ namespace SYC
 		void Render(vector<Color>& pixels) const
 		{
 
-/*			ImGui::Begin("Sphere");
-			ImGui::SliderFloat3("Center", (float*)&sphere->center, -(float)width / height, (float)width / height);
-			ImGui::SliderFloat("Radius", (float*)&sphere->radius, 0.0f, 1.0f);
-			ImGui::SliderFloat3("RGB", (float*)&sphere->color, 0.0f, 1.0f);
-			ImGui::End();
-			*/
+			///*	
+			//ImGui::Begin("Sphere");
+			//ImGui::SliderFloat3("Center", (float*)&sphere->center, -(float)width / height, (float)width / height);
+			//ImGui::SliderFloat("Radius", (float*)&sphere->radius, 0.0f, 1.0f);
+			//ImGui::SliderFloat3("RGB", (float*)&sphere->color, 0.0f, 1.0f);
+			////ImGui::End();
+			////*/
+			//ImGui::Begin("Scene Control");
+			//ImGui::SliderFloat3("Light Position", (float*)&light.pos, -2.0f, 2.0f);
+			//ImGui::SliderFloat3("Center", (float*)&objects[0], -2.0f, 2.0f);
+			//ImGui::SliderFloat3("Ambient Color", (float*)&objects[0]->amb, 0.0f, 1.0f);
+			//ImGui::SliderFloat3("Diffuse Color", (float*)&objects[0]->diff, 0.0f, 1.0f);
+			//ImGui::SliderFloat3("Specular Color", (float*)&objects[0]->spec, 0.0f, 1.0f);
+			//ImGui::SliderFloat("Specular Coeff", (float*)&objects[0]->ks, 0.0f, 5.0f);
+			//ImGui::SliderFloat("Specular Power", (float*)&objects[0]->alpha, 1.0f, 200.0f);
+			////ImGui::SliderFloat("Ks Light", (float*)&objects[0]->ks, 0.0f, 1.0f);
+			////ImGui::SliderFloat3("Sphere Position", (float*)&sphere->center, -1.0f, 1.0f);
+			//ImGui::End();
+			////const Vector3 eyePos(0.0f, 0.0f, -1.5f);
+			//Vector3 eyePos(0.0f, 0.0f, -1.5f);
+
+			//fill(pixels.begin(), pixels.end(), Color());
+
+			if (!objects.empty())
+			{
+				if (auto sphere = dynamic_pointer_cast<Sphere>(objects[0]))
+				{
+					ImGui::Begin("Sphere");
+					ImGui::SliderFloat3("Center", (float*)&sphere->center, -(float)width / height, (float)width / height);
+					ImGui::SliderFloat("Radius", &sphere->radius, 0.05f, 2.0f);
+					ImGui::SliderFloat3("Ambient Color", (float*)&sphere->amb, 0.0f, 1.0f);
+					ImGui::SliderFloat3("Diffuse Color", (float*)&sphere->diff, 0.0f, 1.0f);
+					ImGui::SliderFloat3("Specular Color", (float*)&sphere->spec, 0.0f, 1.0f);
+					ImGui::SliderFloat("Specular Coeff", &sphere->ks, 0.0f, 5.0f);
+					ImGui::SliderFloat("Specular Power", &sphere->alpha, 1.0f, 200.0f);
+					ImGui::End();
+				}
+			}
+
 			ImGui::Begin("Scene Control");
 			ImGui::SliderFloat3("Light Position", (float*)&light.pos, -2.0f, 2.0f);
-			//ImGui::SliderFloat3("Sphere Position", (float*)&sphere->center, -1.0f, 1.0f);
 			ImGui::End();
-			//const Vector3 eyePos(0.0f, 0.0f, -1.5f);
+
 			Vector3 eyePos(0.0f, 0.0f, -1.5f);
 
-
 			fill(pixels.begin(), pixels.end(), Color());
-
-
 
 #pragma omp parallel for
 			for (int y = 0; y < height; ++y)

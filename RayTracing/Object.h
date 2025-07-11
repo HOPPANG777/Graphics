@@ -13,6 +13,7 @@ namespace SYC
 		Color diff;//diffuse
 		Color spec;//specular
 		float alpha = 0.0f;
+		float ks = 1.0f;//specular coefficient
 
 		shared_ptr<Texture> ambTexture;
 		shared_ptr<Texture> difTexture;
