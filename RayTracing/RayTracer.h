@@ -154,17 +154,16 @@ namespace SYC
 				Vector3 l;
 				(light.pos - hit.point).Normalize(l);
 
-
+				//if(shadowHit.distance>=0 && shadowHit.distance < l.Distance(hit.point, light.pos))
 				//*
 				// ±×¸²ÀÚ Off
+
 				Ray shadowRay = { hit.point + 1e-4f * l, l };
 				
-
 				const auto& shadowHit = FindClosestCollision(shadowRay);
-
-				//if(shadowHit.distance>=0 && shadowHit.distance < l.Distance(hit.point, light.pos))
-				if(shadowHit.obj != nullptr && shadowHit.distance <= (hit.point - light.pos).Length())
-					return Color(hit.obj->amb);
+				
+				if(shadowHit.obj != nullptr && shadowHit.distance <= (hit.point - light.pos).Length()) return Color(hit.obj->amb);
+				
 				//*/
 				const float diff = max(n.Dot(l), 0.0f);
 
@@ -230,7 +229,7 @@ namespace SYC
 
 			if (!objects.empty())
 			{
-				if (auto sphere = dynamic_pointer_cast<Sphere>(objects[0]))
+				if (const auto& sphere = dynamic_pointer_cast<Sphere>(objects[0]))
 				{
 					ImGui::Begin("Sphere");
 					ImGui::SliderFloat3("Center", (float*)&sphere->center, -(float)width / height, (float)width / height);
